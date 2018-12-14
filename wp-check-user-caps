@@ -1,0 +1,11 @@
+if(isset($_GET['caps'])) {
+	// Add /?caps=user to URL to view current user caps
+	$checkUserRoles = ($_GET['caps']);
+	if($checkUserRoles === 'user') {
+		$data = get_userdata(get_current_user_id());
+		if (is_object($data)) {
+		    $current_user_caps = $data->allcaps;
+		    echo '<pre>' . print_r($current_user_caps, true) . '</pre>';
+		}
+	}
+} // end user role check
